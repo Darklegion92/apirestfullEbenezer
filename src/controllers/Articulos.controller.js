@@ -24,6 +24,7 @@ async function obtener(req, res) {
       " m.marc_cod = a.marc_cod and p.lipr_cod = 1 and a.esar_cod = 'A'";
   }
   await conexionFirebird(USER, PASS, async (err, con) => {
+    if (err) throw err;
     await con.query(sql, async function (err, result) {
       if (err) throw err;
       let datos = [];
