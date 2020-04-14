@@ -1,11 +1,10 @@
 const conexionFirebird = require("../config/conectionFirebird");
+const {USER,PASS} = require("../config/config");
 
 async function ventasFecha(req, res) {
   res.setHeader("Content-Type", "application/json");
   console.log(req.query);
   const { fecha_inicial, fecha_final } = req.query;
-  const user = "sysdba";
-  const password = "masterkey";
 
   const sql =
     "SELECT * FROM MOVIMIENTO_INVENTARIO_MES('" +
@@ -13,7 +12,7 @@ async function ventasFecha(req, res) {
     "','" +
     fecha_final +
     "',1,'01','06')";
-  await conexionFirebird(user, password, async (err, con) => {
+  await conexionFirebird(USER, PASS, async (err, con) => {
     await con.query(sql, async function (err, result) {
       if (err) throw err;
       let datos = [];

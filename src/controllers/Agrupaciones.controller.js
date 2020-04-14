@@ -1,13 +1,12 @@
 const conexionFirebird = require("../config/conectionFirebird");
+const {USER,PASS} = require("../config/config");
 
 async function obtener(req, res) {
   res.setHeader("Content-Type", "application/json");
 
-  const user = "sysdba";
-  const password = "masterkey";
   const sql =
     "SELECT f.fain_nom as nombreFamilia,f.fain_cod as codigoFamilia ,g.grin_nom as nombreGrupo, g.grin_cod as codigoGrupo from FAMILIA_INVENTARIO f, grupo_inventario g where f.fain_cod = g.fain_cod";
-  await conexionFirebird(user, password, async (err, con) => {
+  await conexionFirebird(USER, PASS, async (err, con) => {
     await con.query(sql, async function (err, result) {
       if (err) throw err;
       let rest = await result.reduce((prev, current, index, arr) => {
@@ -67,7 +66,7 @@ async function filtro(req, res) {
       familia.toUpperCase() +
       "'  and p.lipr_cod = 1 and a.esar_cod = 'A'";
   }
-  await conexionFirebird(user, password, async (err, con) => {
+  await conexionFirebird(USER, PASS, async (err, con) => {
     await con.query(sql, async function (err, result) {
       if (err) throw err;
       let datos = [];

@@ -1,11 +1,8 @@
 const conexionFirebird = require("../config/conectionFirebird");
+const {USER,PASS} = require("../config/config");
 
 async function obtener(req, res) {
   res.setHeader("Content-Type", "application/json");
-  console.log(req.params);
-
-  const user = "sysdba";
-  const password = "masterkey";
   const { nombre } = req.params;
 
   let sql = "";
@@ -26,7 +23,7 @@ async function obtener(req, res) {
       " WHERE p.arti_cod = a.arti_cod and a.fain_cod = f.fain_cod and a.grin_cod = g.grin_cod and f.fain_cod = g.fain_cod and" +
       " m.marc_cod = a.marc_cod and p.lipr_cod = 1 and a.esar_cod = 'A'";
   }
-  await conexionFirebird(user, password, async (err, con) => {
+  await conexionFirebird(USER, PASS, async (err, con) => {
     await con.query(sql, async function (err, result) {
       if (err) throw err;
       let datos = [];
