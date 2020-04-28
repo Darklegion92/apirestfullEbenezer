@@ -19,16 +19,16 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
     "moment": "^2.24.0",
-    "mongoose": "^5.6.4",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
-    "mysql": "^2.17.1",
-    "node-firebird": "^0.8.6",
+    "mysql": "^2.18.1",
+    "node-gyp": "^6.1.0",
+    "nodeunit": "^0.11.3",
     "react-file-reader": "^1.1.4",
     "sweetalert2": "^8.16.4"
   },
   "devDependencies": {
     "heroku": "^7.27.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.3"
   }
 }

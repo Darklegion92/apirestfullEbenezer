@@ -7,6 +7,7 @@ const cors = require("cors");
 const agrupacionesRouter = require("./routes/Agrupaciones.routes");
 const articulosRouter = require("./routes/Articulos.routes");
 const ventasRouter = require("./routes/Ventas.routes");
+const puntosRouter = require("./routes/Puntos.routes");
 const path = require("path");
 const session = require("express-session");
 const CONFIG = require("./config/config");
@@ -32,6 +33,7 @@ APP.use(morgan("dev"));
 APP.use("/agrupaciones", agrupacionesRouter);
 APP.use("/articulos", articulosRouter);
 APP.use("/ventas", ventasRouter);
+APP.use("/puntos", puntosRouter);
 //APP.use('/',inicioRouter)
 
 //Elementos Estaticos

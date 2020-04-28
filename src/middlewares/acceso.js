@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
-const {deleteSession} = require('../query/Session.query')
+//const {deleteSession} = require('../query/Session.query')
 
 async function isAuth(req,res,next){
     

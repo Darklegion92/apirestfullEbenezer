@@ -1,6 +1,3 @@
-const conexionFirebird = require("../config/conectionFirebird");
-const {USER,PASS} = require("../config/config");
-
 async function ventasFecha(req, res) {
   res.setHeader("Content-Type", "application/json");
   console.log(req.query);
