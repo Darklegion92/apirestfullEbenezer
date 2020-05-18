@@ -51,17 +51,14 @@ async function filtroCodigo(req, res) {
   res.setHeader("Content-Type", "application/json");
   var con = conexionMYSQL.con;
   const { codigo } = req.params;
-  let sql = "";
-
- 
-    sql =
+  console.log(codigo);
+  
+  const sql =
       "SELECT a.*, f.nombreFamilia, g.nombreGrupo, m.nombremarca FROM articulos " +
       "a,familias f,grupos g, marcas m " +
       "WHERE a.idFamilia = f.idfamilia " +
-      "AND a.idgrupo = g.idgrupo AND g.idfamilia = f.idfamilia AND " +
-      "m.idmarca = a.idmarca AND a.idarticulo ='" +
-      codigo +
-      "'";
+      "AND a.idgrupo = g.idgrupo AND " +
+      "m.idmarca = a.idmarca AND a.idarticulo ='" +codigo + "'";
 
   await con.query(sql, async (err, result) => {
     if (err) throw err;
@@ -82,7 +79,10 @@ async function filtroCodigo(req, res) {
     else res.status(201).send({ res: "No Se Encontraron Datos" });
     try {
       con.release();
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+      
+    }
   });
 }
 
